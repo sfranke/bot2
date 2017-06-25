@@ -3,11 +3,16 @@ const logger = require('./logger.js')
 const config = JSON.parse(require('fs').readFileSync('config.json'))
 const util = require('util')
 const colors = require('colors/safe')
+const terminal = require('./terminal.js')
 
-let client = new tmi.client(config.options)
+let options = config.options
+options.identity.password = process.env.TOKEN
+let client = new tmi.client(options)
 
 // Connect the client to the server..
 client.connect()
+
+terminal.ready(client)
 
 client.on('action', function(channel, userstate, message, self) {
   logger.log('debug', 'channel ' + channel)

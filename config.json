@@ -9,15 +9,11 @@
     },
     "identity": {
       "username": "webeplaying",
-      "password": "oauth:989cden4lzyhte5lmulg8uwiu822hb"
+      "password": ""
     },
     "channels": [
       "#webeplaying",
-      "#pixelprodotco",
-      "#dizzydizaster",
-      "#serpent_ai",
-      "#stephen_wolfram",
-      "#psynaps"
+      "#noopkat"
     ]
   }
 }
