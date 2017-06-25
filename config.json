@@ -1,0 +1,23 @@
+{
+  "debuglevel": "info",
+  "options": {
+    "options": {
+      "debug": true
+    },
+    "connection": {
+      "reconnect": true
+    },
+    "identity": {
+      "username": "webeplaying",
+      "password": "oauth:989cden4lzyhte5lmulg8uwiu822hb"
+    },
+    "channels": [
+      "#webeplaying",
+      "#pixelprodotco",
+      "#dizzydizaster",
+      "#serpent_ai",
+      "#stephen_wolfram",
+      "#psynaps"
+    ]
+  }
+}
