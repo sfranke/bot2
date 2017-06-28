@@ -21,6 +21,18 @@ client.on('action', function(channel, userstate, message, self) {
   logger.log('debug', 'self ' + self)
 })
 
+client.on('join', function(channel, username, self) {
+  logger.log('debug', 'channel ' + channel)
+  logger.log('debug', 'username ' + username)
+  logger.log('debug', 'self ' + self)
+})
+
+client.on('part', function(channel, username, self) {
+  logger.log('debug', 'channel ' + channel)
+  logger.log('debug', 'username ' + username)
+  logger.log('debug', 'self ' + self)
+})
+
 client.on('chat', function(channel, userstate, message, self) {
   logger.log('debug', 'channel ' + channel)
   logger.log('debug', 'userstate ' + util.inspect(userstate))
@@ -46,7 +58,7 @@ client.on('chat', function(channel, userstate, message, self) {
       })
     }
 
-    // Chat command '!dc' for disconnecting from the server.
+   // Chat command '!dc' for disconnecting from the server.
     if (command[1] == 'dc' && userstate.username == 'webeplaying') {
       logger.log('debug', 'This is where the dc command should be handled.')
       client.disconnect().then(function(data) {

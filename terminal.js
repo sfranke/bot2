@@ -31,9 +31,10 @@ exports.ready = function(client) {
       let channelName = '#' + consoleInput[0]
       consoleInput.shift()
       let text = consoleInput.toString().replace(/,/g, ' ')
-      if(client.opts.channels.includes(channelName)) {
+      if(client.channels.includes(channelName)) {
         logger.log('info', 'Sending ' + channelName + ': ' + text)
-        logger.log('debug', 'Found channel in array! ' + client.opts.channels.includes(channelName))
+        logger.log('debug', 'ClientObject\n' + util.inspect(client))
+        logger.log('debug', 'ClientObject -> channels currently connected to\n' + client.channels)
         // Actually sending the text into the specified channel.
         client.say(channelName, text).then(function(data) {
           logger.log('debug', 'Callback data after say:\n' + data)
@@ -44,6 +45,24 @@ exports.ready = function(client) {
         logger.log('debug', 'Not connected to this channel! ' + channelName)
         logger.log('info', 'Not connected to this channel! ' + channelName)
       }
+    }
+    if(consoleInput[0] == 'join') {
+      consoleInput.shift()
+      let channelName = '#' + consoleInput[0]
+      client.join(channelName).then(function(data) {
+        logger.log('debug', 'data on channel join\n' + data)
+      }).catch(function(err) {
+        logger.log('debug', 'error on channel join\n' + err)
+      })
+    }
+    if(consoleInput[0] == 'leave') {
+      consoleInput.shift()
+      let channelName = '#' + consoleInput[0]
+      client.part(channelName).then(function(data) {
+        logger.log('debug', 'data on channel part\n' + data)
+      }).catch(function(err) {
+        logger.log('debug', 'error on channel part\n' + err)
+      })
     }
   })
 }
